@@ -1,3 +1,6 @@
+let btn = document.getElementById("start");
+btn.addEventListener('click', launchGame);
+
 const gameBord = document.getElementById('gameBoard')
 const cards = [
     'https://picsum.photos/id/237/100/100', 
@@ -11,6 +14,17 @@ const cards = [
 ];
 
 let selectCards = [];
+
+function launchGame(){
+    gameBord.innerHTML = ""
+    let allCards = duplicateArray(cards);
+    //melanger le tableau
+    allCards = shuffleArray(allCards)
+    allCards.forEach(card => {
+        const cardHtml = createCard(card)
+        gameBord.appendChild(cardHtml);
+    })
+}
 
 function createCard (cardUrl){
     const card = document.createElement('div');
@@ -39,13 +53,7 @@ function shuffleArray(arrayToShuffle){
     return arrayShuffled;
 }
 
-let allCards = duplicateArray(cards);
-//melanger le tableau
-allCards = shuffleArray(allCards)
-allCards.forEach(card => {
-    const cardHtml = createCard(card)
-    gameBord.appendChild(cardHtml);
-})
+
 
 function onCardClick(e){
     const card = e.target.parentElement;
