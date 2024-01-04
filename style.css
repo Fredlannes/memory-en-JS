@@ -1,0 +1,42 @@
+body{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+#gameBoard{
+    display: grid;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: repeat(4,100px);
+    gap: 10px;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.card {
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: rotateY(0deg);
+    transition: all 0.5s;
+}
+
+.card.matched {
+    border: solid 4px rgb(0,255,0);
+    box-sizing: border-box;
+    cursor: default;
+}
+
+.card .cardContent {
+    opacity: 0;
+    max-width: 100%;
+    transition: all 0.3s;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card.flip .cardContent{
+    opacity: 1;
+}
